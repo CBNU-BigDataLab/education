@@ -48,7 +48,7 @@ app.controller('appController', function($scope, appFactory){
 
 	$scope.queryAllProductByType = function(){
 
-		var product_type = $scope.consumer_product_type;
+		var product_type = $scope.product_type;
 
 		appFactory.queryAllProductByType(product_type, function(data){
 			var array = [];

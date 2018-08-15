@@ -74,6 +74,7 @@
         <li><a data-toggle="tab" href="#menu2">Query All Product By Type</a></li>
         <li><a data-toggle="tab" href="#menu3">Create New Product</a></li>
         <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
+        <li><a data-toggle="tab" href="#menu5">Consumer Trading</a></li>
       </ul>
       <div class="tab-content">
           <div id="menu1" class="tab-pane fade in active">
@@ -228,6 +229,76 @@
               <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
             </div>
           </div>
+          <div id="menu5" class="tab-pane fade">
+              <!-- <div class="form-group">
+                <label>Query a Specific Tuna Catch</label><br>
+                <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
+                Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
+                <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
+              </div> -->
+  
+              <div class="form-group">
+                  <label>Query Agriculture Product</label><br>
+                  <h5 style="color:red;margin-bottom:2%" id="error_consumer_query">Error: Please enter a valid Prudocut Type</h5>
+                  Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="consumer_product_type">
+                  <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="consumerQueryAllProductByType()">
+                </div>
+  
+              <!-- <table id="query_tuna" class="table" align="center">
+  
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Holder</th>
+                  <th>Catch Location <br>(Longitude, Latitude)</th>
+                  <th>Vessel</th>
+                </tr>
+  
+                <tr>
+                  <td>{{query_tuna.timestamp}}</td>
+                  <td>{{query_tuna.holder}}</td>
+                  <td>{{query_tuna.location}}</td>
+                  <td>{{query_tuna.vessel}}</td>
+                </tr>
+              </table> -->
+  
+              <table id="query_product" class="table" align="center">
+  
+                  <tr>
+                      <th> <input type="checkbox" 
+                        ng-model="selectAll" 
+                        ng-click="checkAll()" /></th>
+                      <th>Product ID</th>
+                      <th>Producing Area</th>
+                      <th>Product Type</th>
+                      <th>Product Unit</th>
+                      <th>Unit Price</th>
+                      <th>Quantity</th>
+                      <th>Timestamp</th>
+                      <th>Holder</th>
+                  </tr>
+                  <tr ng-repeat="query_product in consumer_query_products">
+                      <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}" ng-model="product.select"></td>
+                      <td>{{query_product.Key}}</td>
+                      <td>{{query_product.producing_area}}</td>
+                      <td>{{query_product.product_type}}</td>
+                      <td>{{query_product.product_unit}}</td>
+                      <td>{{query_product.unit_price}}</td>
+                      <td>{{query_product.quantity}}</td>
+                      <td>{{query_product.timestamp}}</td>
+                      <td>{{query_product.holder}}</td>
+                  </tr>
+                </table>
+
+                <div class="form-group">
+                  <input id="btnSelect" type="submit" value="선택상품주문" class="btn btn-primary" ng-click="">
+                  <input id="btnCancel" type="submit" value="취소" class="btn btn-danger" ng-click="">
+                </div>
+                <br />
+                <div class="form-group" style="margin:0 auto;">
+                    <input id="btnPayment" type="submit" value="결재" class="btn btn-primary btn-lg btn-block" ng-click="">
+                  </div>
+            </div>
+
         </div>
     </div>
   </body>

@@ -11,6 +11,7 @@ app.controller('appController', function($scope, appFactory){
 	$("#success_create").hide();
 	$("#error_holder").hide();
 	$("#error_query").hide();
+	$("#error_consumer_query").hide();
 	
 	$scope.queryAllProduct = function(){
 
@@ -47,7 +48,7 @@ app.controller('appController', function($scope, appFactory){
 
 	$scope.queryAllProductByType = function(){
 
-		var product_type = $scope.product_type;
+		var product_type = $scope.consumer_product_type;
 
 		appFactory.queryAllProductByType(product_type, function(data){
 			var array = [];
@@ -60,6 +61,24 @@ app.controller('appController', function($scope, appFactory){
 			    return parseFloat(a.Key) - parseFloat(b.Key);
 			});
 			$scope.query_products = array;
+		});
+	}
+
+	$scope.consumerQueryAllProductByType = function(){
+
+		var product_type = $scope.consumer_product_type;
+
+		appFactory.queryAllProductByType(product_type, function(data){
+			var array = [];
+			for (var i = 0; i < data.length; i++){
+				parseInt(data[i].Key);
+				data[i].Record.Key = parseInt(data[i].Key);
+				array.push(data[i].Record);
+			}
+			array.sort(function(a, b) {
+			    return parseFloat(a.Key) - parseFloat(b.Key);
+			});
+			$scope.consumer_query_products = array;
 		});
 	}
 
@@ -84,6 +103,12 @@ app.controller('appController', function($scope, appFactory){
 			}
 		});
 	}
+
+	$scope.checkAll = function() {
+		angular.forEach($scope.consumer_query_products, function(product) {
+		  product.select = $scope.selectAll;
+		});
+	};
 
 });
 

@@ -69,155 +69,166 @@
     </header>
 
     <div id="body">
-      <div class="form-group">
-        <label>Query All Products</label>
-        <!-- <p><input id="queryAllTuna" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllTuna()"></p> -->
-        <p><input id="queryAllproduct" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProduct()"></p>
-      </div>
- 
-      <!-- <table id="all_tuna" class="table" align="center">
-        <tr>
-          <th>ID</th>
-          <th>Timestamp</th>
-          <th>Holder</th>
-          <th>Catch Location <br>(Longitude, Latitude)</th>
-          <th>Vessel</th>
-        </tr>
-        
-        <tr ng-repeat="tuna in all_tuna">
-          <td>{{tuna.Key}}</td>
-          <td>{{tuna.timestamp}}</td>
-          <td>{{tuna.holder}}</td>
-          <td>{{tuna.location}}</td>
-          <td>{{tuna.vessel}}</td>
-        </tr>
-      </table>   -->
-        
-      <table id="all_product" class="table" align="center">
-        <tr>
-          <th>Product ID</th>
-          <th>Producing Area</th>
-          <th>Product Type</th>
-          <th>Product Unit</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Timestamp</th>
-          <th>Holder</th>
-        </tr>
-        <tr ng-repeat="product in all_product">
-          <td>{{product.Key}}</td>
-          <td>{{product.producing_area}}</td>
-          <td>{{product.product_type}}</td>
-          <td>{{product.product_unit}}</td>
-          <td>{{product.unit_price}}</td>
-          <td>{{product.quantity}}</td>
-          <td>{{product.timestamp}}</td>
-          <td>{{product.holder}}</td>
-        </tr>
-      </table>
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#menu1">Query All Products</a></li>
+        <li><a data-toggle="tab" href="#menu2">Query All Product By Type</a></li>
+        <li><a data-toggle="tab" href="#menu3">Create New Product</a></li>
+        <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
+      </ul>
+      <div class="tab-content">
+          <div id="menu1" class="tab-pane fade in active">
+              <div class="form-group">
+                  <label>Query All Products</label>
+                  <!-- <p><input id="queryAllTuna" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllTuna()"></p> -->
+                  <p><input id="queryAllproduct" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProduct()"></p>
+                </div>
+           
+                <!-- <table id="all_tuna" class="table" align="center">
+                  <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Holder</th>
+                    <th>Catch Location <br>(Longitude, Latitude)</th>
+                    <th>Vessel</th>
+                  </tr>
+                  
+                  <tr ng-repeat="tuna in all_tuna">
+                    <td>{{tuna.Key}}</td>
+                    <td>{{tuna.timestamp}}</td>
+                    <td>{{tuna.holder}}</td>
+                    <td>{{tuna.location}}</td>
+                    <td>{{tuna.vessel}}</td>
+                  </tr>
+                </table>   -->
+                  
+                <table id="all_product" class="table" align="center">
+                  <tr>
+                    <th>Product ID</th>
+                    <th>Producing Area</th>
+                    <th>Product Type</th>
+                    <th>Product Unit</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Timestamp</th>
+                    <th>Holder</th>
+                  </tr>
+                  <tr ng-repeat="product in all_product">
+                    <td>{{product.Key}}</td>
+                    <td>{{product.producing_area}}</td>
+                    <td>{{product.product_type}}</td>
+                    <td>{{product.product_unit}}</td>
+                    <td>{{product.unit_price}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.timestamp}}</td>
+                    <td>{{product.holder}}</td>
+                  </tr>
+                </table>
+          </div>
+          <div id="menu2" class="tab-pane fade">
+            <!-- <div class="form-group">
+              <label>Query a Specific Tuna Catch</label><br>
+              <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
+              Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
+              <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
+            </div> -->
 
+            <div class="form-group">
+                <label>Query a Specific Product Harvest</label><br>
+                <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Prudocut Type</h5>
+                Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product_type">
+                <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProductByType()">
+              </div>
 
-      <!-- <div class="form-group">
-        <label>Query a Specific Tuna Catch</label><br>
-        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
-        Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
-        <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
-      </div> -->
+            <!-- <table id="query_tuna" class="table" align="center">
 
-      <div class="form-group">
-          <label>Query a Specific Product Harvest</label><br>
-          <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Prudocut Type</h5>
-          Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product_type">
-          <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProductByType()">
+              <tr>
+                <th>Timestamp</th>
+                <th>Holder</th>
+                <th>Catch Location <br>(Longitude, Latitude)</th>
+                <th>Vessel</th>
+              </tr>
+
+              <tr>
+                <td>{{query_tuna.timestamp}}</td>
+                <td>{{query_tuna.holder}}</td>
+                <td>{{query_tuna.location}}</td>
+                <td>{{query_tuna.vessel}}</td>
+              </tr>
+            </table> -->
+
+            <table id="query_product" class="table" align="center">
+
+                <tr>
+                    <th>Product ID</th>
+                    <th>Producing Area</th>
+                    <th>Product Type</th>
+                    <th>Product Unit</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Timestamp</th>
+                    <th>Holder</th>
+                </tr>
+                <tr ng-repeat="query_product in query_products">
+                    <td>{{query_product.Key}}</td>
+                    <td>{{query_product.producing_area}}</td>
+                    <td>{{query_product.product_type}}</td>
+                    <td>{{query_product.product_unit}}</td>
+                    <td>{{query_product.unit_price}}</td>
+                    <td>{{query_product.quantity}}</td>
+                    <td>{{query_product.timestamp}}</td>
+                    <td>{{query_product.holder}}</td>
+                </tr>
+              </table>
+          </div>
+          <div id="menu3" class="tab-pane fade">
+            <!-- <div class="form-group">
+            <label>Create Tuna Record</label>
+            <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
+            <br>
+            Enter catch id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="tuna.id">
+            Enter name of vessel: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="tuna.vessel">
+            Enter longitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 28.012" ng-model="tuna.longitude"> 
+            Enter latitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 150.405" ng-model="tuna.latitude">
+            Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="tuna.timestamp">
+            Enter name of holder: <input class="form-control" type="text" placeholder="Ex: Hansel" ng-model="tuna.holder">
+            <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordTuna()"> 
+          </div> -->
+
+          <div class="form-group">
+              <label>Create Product Record</label>
+              <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_product}}</h5>
+              <br>
+              Enter Product ID: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="product.id">
+              Enter Producing Area: <input class="form-control" type="text" placeholder="Ex: 남이면" ng-model="product.producing_area">
+              Enter Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product.product_type"> 
+              Enter Product Unit: <input id="createName" class="form-control" type="text" placeholder="Ex: g, kg, ea" ng-model="product.product_unit">
+              Enter Unit Price: <input class="form-control" type="text" placeholder="Ex: 10000" ng-model="product.unit_price">
+              Enter Quantity: <input class="form-control" type="text" placeholder="Ex: 5" ng-model="product.quantity">
+              Enter Timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="product.timestamp">
+              Enter Holder Name: <input class="form-control" type="text" placeholder="Ex: 홍길동" ng-model="product.holder">
+              <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordProduct()"> 
+            </div>
+          </div>
+          <div id="menu4" class="tab-pane fade">
+            <!-- <div class="form-group">
+              <label>Change Tuna Holder</label><br>
+              <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
+              <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Tuna Id</h5>
+              Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
+              Enter name of new holder: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
+              <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
+            </div> -->
+
+            <div class="form-group">
+              <label>Change Product Holder</label><br>
+              <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
+              <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Product Id</h5>
+              Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
+              Enter New Holder Name: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
+              <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
+            </div>
+          </div>
         </div>
-
-      <!-- <table id="query_tuna" class="table" align="center">
-
-        <tr>
-          <th>Timestamp</th>
-          <th>Holder</th>
-          <th>Catch Location <br>(Longitude, Latitude)</th>
-          <th>Vessel</th>
-        </tr>
-
-        <tr>
-          <td>{{query_tuna.timestamp}}</td>
-          <td>{{query_tuna.holder}}</td>
-          <td>{{query_tuna.location}}</td>
-          <td>{{query_tuna.vessel}}</td>
-        </tr>
-      </table> -->
-
-      <table id="query_product" class="table" align="center">
-
-          <tr>
-              <th>Product ID</th>
-              <th>Producing Area</th>
-              <th>Product Type</th>
-              <th>Product Unit</th>
-              <th>Unit Price</th>
-              <th>Quantity</th>
-              <th>Timestamp</th>
-              <th>Holder</th>
-          </tr>
-          <tr ng-repeat="query_product in query_products">
-              <td>{{query_product.Key}}</td>
-              <td>{{query_product.producing_area}}</td>
-              <td>{{query_product.product_type}}</td>
-              <td>{{query_product.product_unit}}</td>
-              <td>{{query_product.unit_price}}</td>
-              <td>{{query_product.quantity}}</td>
-              <td>{{query_product.timestamp}}</td>
-              <td>{{query_product.holder}}</td>
-          </tr>
-        </table>
-
-      <!-- <div class="form-group">
-        <label>Create Tuna Record</label>
-        <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
-        <br>
-        Enter catch id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="tuna.id">
-        Enter name of vessel: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="tuna.vessel">
-        Enter longitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 28.012" ng-model="tuna.longitude"> 
-        Enter latitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 150.405" ng-model="tuna.latitude">
-        Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="tuna.timestamp">
-        Enter name of holder: <input class="form-control" type="text" placeholder="Ex: Hansel" ng-model="tuna.holder">
-        <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordTuna()"> 
-      </div> -->
-
-      <div class="form-group">
-          <label>Create Product Record</label>
-          <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_product}}</h5>
-          <br>
-          Enter Product ID: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="product.id">
-          Enter Producing Area: <input class="form-control" type="text" placeholder="Ex: 남이면" ng-model="product.producing_area">
-          Enter Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product.product_type"> 
-          Enter Product Unit: <input id="createName" class="form-control" type="text" placeholder="Ex: g, kg, ea" ng-model="product.product_unit">
-          Enter Unit Price: <input class="form-control" type="text" placeholder="Ex: 10000" ng-model="product.unit_price">
-          Enter Quantity: <input class="form-control" type="text" placeholder="Ex: 5" ng-model="product.quantity">
-          Enter Timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="product.timestamp">
-          Enter Holder Name: <input class="form-control" type="text" placeholder="Ex: 홍길동" ng-model="product.holder">
-          <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordProduct()"> 
-        </div>
-
-      <!-- <div class="form-group">
-        <label>Change Tuna Holder</label><br>
-        <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
-        <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Tuna Id</h5>
-        Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
-        Enter name of new holder: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
-        <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
-      </div> -->
-
-      <div class="form-group">
-          <label>Change Product Holder</label><br>
-          <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
-          <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Product Id</h5>
-          Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
-          Enter New Holder Name: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
-          <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
-        </div>
-
     </div>
   </body>
     <!-- requiring the angular page -->

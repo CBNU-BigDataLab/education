@@ -29,6 +29,18 @@ require('./routes.js')(app);
 // set up a static file server that points to the "client" directory
 app.use(express.static(path.join(__dirname, './client')));
 
+app.get('/login', function(req, res){
+  res.sendFile(path.join(__dirname, './client/login.html'));
+})
+
+app.post('/login', function(req, res){
+  console.log(req)
+})
+
+app.get('/customer', function(req, res){
+  res.sendFile(path.join(__dirname, './client/customer.html'));
+})
+
 // Save our port
 var port = process.env.PORT || 8000;
 

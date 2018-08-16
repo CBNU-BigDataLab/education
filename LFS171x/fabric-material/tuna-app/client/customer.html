@@ -128,9 +128,7 @@
 
               <table id="query_product" class="table" align="center">
                   <tr>
-                      <th> <input type="checkbox" 
-                        ng-model="selectAll" 
-                        ng-click="checkAll()" /></th>
+                      <th></th>
                       <th>Product ID</th>
                       <th>Producing Area</th>
                       <th>Product Type</th>
@@ -141,7 +139,7 @@
                       <th>Holder</th>
                   </tr>
                   <tr ng-repeat="query_product in consumer_query_products">
-                      <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}" ng-model="product.select"></td>
+                      <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}></td>
                       <td>{{query_product.Key}}</td>
                       <td>{{query_product.producing_area}}</td>
                       <td>{{query_product.product_type}}</td>

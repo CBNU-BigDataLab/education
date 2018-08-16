@@ -33,9 +33,9 @@ app.get('/login', function(req, res){
   res.sendFile(path.join(__dirname, './client/login.html'));
 })
 
-app.post('/login', function(req, res){
-  console.log(req)
-})
+// app.post('/login', function(req, res){
+//   console.log(req)
+// })
 
 app.get('/customer', function(req, res){
   res.sendFile(path.join(__dirname, './client/customer.html'));

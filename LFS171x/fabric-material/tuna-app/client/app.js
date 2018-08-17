@@ -13,20 +13,6 @@ app.controller('appController', function($scope, appFactory, $window){
 	$("#error_query").hide();
 	$("#error_consumer_query").hide();
 
-	$scope.loginUser = function() {
-		var user = $scope.user
-
-		if (user.username.toLowerCase() == "admin" && user.password.toLowerCase() == "admin") {
-			$window.location.href = '/';
-		}else if (user.username.toLowerCase() == "customer" && user.password.toLowerCase() == "customer") {
-			$window.location.href = '/customer';
-		}
-	}
-
-	$scope.logoutUser = function() {
-		$window.location.href = "/login"
-	}
-	
 	$scope.queryAllProduct = function(){
 		
 		appFactory.queryAllProduct(function(data){

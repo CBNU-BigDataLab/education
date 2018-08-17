@@ -30,19 +30,19 @@
                                     <h3 class="mb-0">Agriculture Blockchain Network Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <!-- <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""> -->
+                                     <form class="form" role="form" autocomplete="off" id="formLogin" action="/login" method="post">
                                         <div class="form-group">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control form-control-md rounded-0" name="username" id="username" required="" ng-model="user.username">
+                                            <input type="text" class="form-control form-control-md rounded-0" name="username" id="username" required="">
                                             <div class="invalid-feedback">Oops, you missed this one.</div>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control form-control-md rounded-0" name="password" id="password" required="" autocomplete="new-password" ng-model="user.password">
+                                            <input type="password" class="form-control form-control-md rounded-0" name="password" id="password" required="" autocomplete="new-password">
                                             <div class="invalid-feedback">Enter your password too!</div>
                                         </div>
-                                        <button type="submit" class="btn btn-success btn-md float-right rounded-0" id="btnLogin" ng-click="loginUser()">Login</button>
-                                    <!-- </form> -->
+                                        <button type="submit" class="btn btn-success btn-md float-right rounded-0" id="btnLogin">Login</button>
+                                    </form>
                                 </div>
                                 <!--/card-block-->
                             </div>

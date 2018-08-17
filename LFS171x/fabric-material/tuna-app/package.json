@@ -8,6 +8,7 @@
         "body-parser": "latest",
         "ejs": "latest",
         "express": "latest",
+        "express-session": "^1.15.6",
         "express-validator": "^5.3.0",
         "fabric-ca-client": "^1.0.2",
         "fabric-client": "^1.2.1",

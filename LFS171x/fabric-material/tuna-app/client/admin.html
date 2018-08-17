@@ -2,90 +2,107 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- <title>Hyperledger Fabric Tuna Application</title> -->
-    <title>Hyperledger Fabric Agricultural Application</title>
-    <link rel="icon" href="favicon.png" type="image/gif">
 
-    <!-- require jquery and bootstrap scripts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    
-    <!-- adding style here -->
-    <style type="text/css">
-      header{
-        background-color: lightgray;
-        font-size:20px;
-        padding:15px;
-      }
-      header, .form-group{
-        margin-bottom: 3%;
-      }
-      .form-group{
-        width:50%;
-      }
-      #body{
-        margin-left:3%;
-        margin-right:3%;
-      }
-      .form-control{
-        margin: 8px;
-      }
-      #right_header{
-        width:20%;
-        font-size:15px;
-        margin-right:0px;
-      }
-      #left_header{
-        margin-left:0;
-        width:40%;
-        display:inline-block;
-      } 
-      #id {
-        width:49%;
-        display: inline-block;
-      }
-      table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-      }
-      td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-      }
-      tr:nth-child(even) {
-          background-color: #dddddd;
-      }
-    </style>
-  </head>
-  <body ng-app="application" ng-controller="appController">
+<head>
+  <!-- <title>Hyperledger Fabric Tuna Application</title> -->
+  <title>Hyperledger Fabric Agricultural Application</title>
+  <link rel="icon" href="favicon.png" type="image/gif">
+
+  <!-- require jquery and bootstrap scripts -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <!-- adding style here -->
+  <style type="text/css">
+    header {
+      background-color: transparent;
+      font-size: 30px;
+      padding: 15px;
+    }
+
+    #body {
+      margin-left: 3%;
+      margin-right: 3%;
+    }
+
+    .form-control {
+      margin: 8px;
+    }
+
+    #right_header {
+      width: 20%;
+      font-size: 15px;
+      margin-right: 0px;
+    }
+
+    #left_header {
+      margin-left: 0;
+      width: 40%;
+      display: inline-block;
+    }
+
+    #id {
+      width: 49%;
+      display: inline-block;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .cover {
+      color: rgb(255, 255, 255);
+      position: relative;
+      min-height: 600px;
+      background: url("img/admin-cover.jpg") no-repeat scroll 0px 100% / cover transparent;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body ng-app="application" ng-controller="appController">
+
+
+  <div class="cover">
     <header>
       <div id="left_header">Agriculture Blockchain Application - Admin Page</div>
-      <!-- <i id="right_header">Example Blockchain Application for Introduction to Hyperledger Fabric LFS171x</i> -->
-      <a class="btn btn-danger btn-md float-right rounded-0" style="position: absolute; right: 0;margin-right: 10px;" href="/logout" role="button">Logout</a>
-    </header>
 
-    <div id="body">
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#menu1">Query All Products</a></li>
-        <li><a data-toggle="tab" href="#menu2">Query All Product By Type</a></li>
-        <li><a data-toggle="tab" href="#menu3">Create New Product</a></li>
-        <!-- <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
+      <a class="btn btn-danger btn-md float-right rounded-0" style="position: absolute; right: 0;margin-right: 10px;" href="/logout"
+        role="button">Logout</a>
+    </header>
+  </div>
+
+  <div id="body">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#menu1">Query All Products</a></li>
+      <li><a data-toggle="tab" href="#menu2">Query All Product By Type</a></li>
+      <li><a data-toggle="tab" href="#menu3">Create New Product</a></li>
+      <!-- <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
         <li><a data-toggle="tab" href="#menu5">Consumer Trading</a></li> -->
-      </ul>
-      <div class="tab-content">
-          <div id="menu1" class="tab-pane fade in active">
-              <div class="form-group">
-                  <label>Query All Products</label>
-                  <!-- <p><input id="queryAllTuna" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllTuna()"></p> -->
-                  <p><input id="queryAllproduct" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProduct()"></p>
-                </div>
-           
-                <!-- <table id="all_tuna" class="table" align="center">
+    </ul>
+    <div class="tab-content">
+      <div id="menu1" class="tab-pane fade in active">
+        <div class="form-group">
+          <label>Query All Products</label>
+          <!-- <p><input id="queryAllTuna" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllTuna()"></p> -->
+          <p><input id="queryAllproduct" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProduct()"></p>
+        </div>
+
+        <!-- <table id="all_tuna" class="table" align="center">
                   <tr>
                     <th>ID</th>
                     <th>Timestamp</th>
@@ -102,46 +119,46 @@
                     <td>{{tuna.vessel}}</td>
                   </tr>
                 </table>   -->
-                  
-                <table id="all_product" class="table" align="center">
-                  <tr>
-                    <th>Product ID</th>
-                    <th>Producing Area</th>
-                    <th>Product Type</th>
-                    <th>Product Unit</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Timestamp</th>
-                    <th>Holder</th>
-                  </tr>
-                  <tr ng-repeat="product in all_product">
-                    <td>{{product.Key}}</td>
-                    <td>{{product.producing_area}}</td>
-                    <td>{{product.product_type}}</td>
-                    <td>{{product.product_unit}}</td>
-                    <td>{{product.unit_price}}</td>
-                    <td>{{product.quantity}}</td>
-                    <td>{{product.timestamp}}</td>
-                    <td>{{product.holder}}</td>
-                  </tr>
-                </table>
-          </div>
-          <div id="menu2" class="tab-pane fade">
-            <!-- <div class="form-group">
+
+        <table id="all_product" class="table" align="center">
+          <tr>
+            <th>Product ID</th>
+            <th>Producing Area</th>
+            <th>Product Type</th>
+            <th>Product Unit</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Timestamp</th>
+            <th>Holder</th>
+          </tr>
+          <tr ng-repeat="product in all_product">
+            <td>{{product.Key}}</td>
+            <td>{{product.producing_area}}</td>
+            <td>{{product.product_type}}</td>
+            <td>{{product.product_unit}}</td>
+            <td>{{product.unit_price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.timestamp}}</td>
+            <td>{{product.holder}}</td>
+          </tr>
+        </table>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <!-- <div class="form-group">
               <label>Query a Specific Tuna Catch</label><br>
               <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
               Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
               <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
             </div> -->
 
-            <div class="form-group">
-                <label>Query a Specific Product Harvest</label><br>
-                <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Prudocut Type</h5>
-                Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product_type">
-                <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProductByType()">
-              </div>
+        <div class="form-group">
+          <label>Query a Specific Product Harvest</label><br>
+          <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Prudocut Type</h5>
+          Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product_type">
+          <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProductByType()">
+        </div>
 
-            <!-- <table id="query_tuna" class="table" align="center">
+        <!-- <table id="query_tuna" class="table" align="center">
 
               <tr>
                 <th>Timestamp</th>
@@ -158,32 +175,32 @@
               </tr>
             </table> -->
 
-            <table id="query_product" class="table" align="center">
+        <table id="query_product" class="table" align="center">
 
-                <tr>
-                    <th>Product ID</th>
-                    <th>Producing Area</th>
-                    <th>Product Type</th>
-                    <th>Product Unit</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Timestamp</th>
-                    <th>Holder</th>
-                </tr>
-                <tr ng-repeat="query_product in query_products">
-                    <td>{{query_product.Key}}</td>
-                    <td>{{query_product.producing_area}}</td>
-                    <td>{{query_product.product_type}}</td>
-                    <td>{{query_product.product_unit}}</td>
-                    <td>{{query_product.unit_price}}</td>
-                    <td>{{query_product.quantity}}</td>
-                    <td>{{query_product.timestamp}}</td>
-                    <td>{{query_product.holder}}</td>
-                </tr>
-              </table>
-          </div>
-          <div id="menu3" class="tab-pane fade">
-            <!-- <div class="form-group">
+          <tr>
+            <th>Product ID</th>
+            <th>Producing Area</th>
+            <th>Product Type</th>
+            <th>Product Unit</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Timestamp</th>
+            <th>Holder</th>
+          </tr>
+          <tr ng-repeat="query_product in query_products">
+            <td>{{query_product.Key}}</td>
+            <td>{{query_product.producing_area}}</td>
+            <td>{{query_product.product_type}}</td>
+            <td>{{query_product.product_unit}}</td>
+            <td>{{query_product.unit_price}}</td>
+            <td>{{query_product.quantity}}</td>
+            <td>{{query_product.timestamp}}</td>
+            <td>{{query_product.holder}}</td>
+          </tr>
+        </table>
+      </div>
+      <div id="menu3" class="tab-pane fade">
+        <!-- <div class="form-group">
             <label>Create Tuna Record</label>
             <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
             <br>
@@ -196,23 +213,22 @@
             <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordTuna()"> 
           </div> -->
 
-          <div class="form-group">
-              <label>Create Product Record</label>
-              <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_product}}</h5>
-              <br>
-              Enter Product ID: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="product.id">
-              Enter Producing Area: <input class="form-control" type="text" placeholder="Ex: 남이면" ng-model="product.producing_area">
-              Enter Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product.product_type"> 
-              Enter Product Unit: <input id="createName" class="form-control" type="text" placeholder="Ex: g, kg, ea" ng-model="product.product_unit">
-              Enter Unit Price: <input class="form-control" type="text" placeholder="Ex: 10000" ng-model="product.unit_price">
-              Enter Quantity: <input class="form-control" type="text" placeholder="Ex: 5" ng-model="product.quantity">
-              Enter Timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="product.timestamp">
-              Enter Holder Name: <input class="form-control" type="text" placeholder="Ex: 홍길동" ng-model="product.holder">
-              <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordProduct()"> 
-            </div>
-          </div>
-          <div id="menu4" class="tab-pane fade">
-            <!-- <div class="form-group">
+        <div class="form-group">
+          <label>Create Product Record</label>
+          <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_product}}</h5>
+          <br> Enter Product ID: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="product.id"> Enter
+          Producing Area: <input class="form-control" type="text" placeholder="Ex: 남이면" ng-model="product.producing_area">          Enter
+          Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product.product_type">          Enter
+          Product Unit: <input id="createName" class="form-control" type="text" placeholder="Ex: g, kg, ea" ng-model="product.product_unit">          Enter
+          Unit Price: <input class="form-control" type="text" placeholder="Ex: 10000" ng-model="product.unit_price"> Enter
+          Quantity: <input class="form-control" type="text" placeholder="Ex: 5" ng-model="product.quantity"> Enter Timestamp:
+          <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="product.timestamp"> Enter Holder
+          Name: <input class="form-control" type="text" placeholder="Ex: 홍길동" ng-model="product.holder">
+          <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordProduct()">
+        </div>
+      </div>
+      <div id="menu4" class="tab-pane fade">
+        <!-- <div class="form-group">
               <label>Change Tuna Holder</label><br>
               <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
               <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Tuna Id</h5>
@@ -221,31 +237,31 @@
               <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
             </div> -->
 
-            <div class="form-group">
-              <label>Change Product Holder</label><br>
-              <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
-              <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Product Id</h5>
-              Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
-              Enter New Holder Name: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
-              <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
-            </div>
-          </div>
-          <div id="menu5" class="tab-pane fade">
-              <!-- <div class="form-group">
+        <div class="form-group">
+          <label>Change Product Holder</label><br>
+          <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
+          <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Product Id</h5>
+          Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">          Enter
+          New Holder Name: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
+          <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
+        </div>
+      </div>
+      <div id="menu5" class="tab-pane fade">
+        <!-- <div class="form-group">
                 <label>Query a Specific Tuna Catch</label><br>
                 <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
                 Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
                 <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
               </div> -->
-  
-              <div class="form-group">
-                  <label>Query Agriculture Product</label><br>
-                  <h5 style="color:red;margin-bottom:2%" id="error_consumer_query">Error: Please enter a valid Prudocut Type</h5>
-                  Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="consumer_product_type">
-                  <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="consumerQueryAllProductByType()">
-                </div>
-  
-              <!-- <table id="query_tuna" class="table" align="center">
+
+        <div class="form-group">
+          <label>Query Agriculture Product</label><br>
+          <h5 style="color:red;margin-bottom:2%" id="error_consumer_query">Error: Please enter a valid Prudocut Type</h5>
+          Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="consumer_product_type">
+          <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="consumerQueryAllProductByType()">
+        </div>
+
+        <!-- <table id="query_tuna" class="table" align="center">
   
                 <tr>
                   <th>Timestamp</th>
@@ -261,46 +277,47 @@
                   <td>{{query_tuna.vessel}}</td>
                 </tr>
               </table> -->
-  
-              <table id="query_product" class="table" align="center">
-  
-                  <tr>
-                      <th> </th>
-                      <th>Product ID</th>
-                      <th>Producing Area</th>
-                      <th>Product Type</th>
-                      <th>Product Unit</th>
-                      <th>Unit Price</th>
-                      <th>Quantity</th>
-                      <th>Timestamp</th>
-                      <th>Holder</th>
-                  </tr>
-                  <tr ng-repeat="query_product in consumer_query_products">
-                      <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}"></td>
-                      <td>{{query_product.Key}}</td>
-                      <td>{{query_product.producing_area}}</td>
-                      <td>{{query_product.product_type}}</td>
-                      <td>{{query_product.product_unit}}</td>
-                      <td>{{query_product.unit_price}}</td>
-                      <td>{{query_product.quantity}}</td>
-                      <td>{{query_product.timestamp}}</td>
-                      <td>{{query_product.holder}}</td>
-                  </tr>
-                </table>
 
-                <div class="form-group">
-                  <input id="btnSelect" type="submit" value="선택상품주문" class="btn btn-primary" ng-click="">
-                  <input id="btnCancel" type="submit" value="취소" class="btn btn-danger" ng-click="">
-                </div>
-                <br />
-                <div class="form-group" style="margin:0 auto;">
-                    <input id="btnPayment" type="submit" value="결재" class="btn btn-primary btn-lg btn-block" ng-click="">
-                  </div>
-            </div>
+        <table id="query_product" class="table" align="center">
 
+          <tr>
+            <th> </th>
+            <th>Product ID</th>
+            <th>Producing Area</th>
+            <th>Product Type</th>
+            <th>Product Unit</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Timestamp</th>
+            <th>Holder</th>
+          </tr>
+          <tr ng-repeat="query_product in consumer_query_products">
+            <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}"></td>
+            <td>{{query_product.Key}}</td>
+            <td>{{query_product.producing_area}}</td>
+            <td>{{query_product.product_type}}</td>
+            <td>{{query_product.product_unit}}</td>
+            <td>{{query_product.unit_price}}</td>
+            <td>{{query_product.quantity}}</td>
+            <td>{{query_product.timestamp}}</td>
+            <td>{{query_product.holder}}</td>
+          </tr>
+        </table>
+
+        <div class="form-group">
+          <input id="btnSelect" type="submit" value="선택상품주문" class="btn btn-primary" ng-click="">
+          <input id="btnCancel" type="submit" value="취소" class="btn btn-danger" ng-click="">
         </div>
+        <br />
+        <div class="form-group" style="margin:0 auto;">
+          <input id="btnPayment" type="submit" value="결재" class="btn btn-primary btn-lg btn-block" ng-click="">
+        </div>
+      </div>
+
     </div>
-  </body>
-    <!-- requiring the angular page -->
-    <script type="text/javascript" src="app.js"> </script>
+  </div>
+</body>
+<!-- requiring the angular page -->
+<script type="text/javascript" src="app.js"> </script>
+
 </html>

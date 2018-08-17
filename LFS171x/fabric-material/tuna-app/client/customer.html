@@ -16,7 +16,6 @@
     <!-- adding style here -->
     <style type="text/css">
       header{
-        background-color: lightgray;
         font-size:20px;
         padding:15px;
       }
@@ -60,14 +59,25 @@
       tr:nth-child(even) {
           background-color: #dddddd;
       }
+
+      .cover {
+        color: rgb(255, 255, 255);
+        position: relative;
+        min-height: 600px;
+        background: url("img/customer-cover.png") no-repeat scroll 0px 100% / cover transparent;
+        margin-bottom: 20px;
+      }
     </style>
   </head>
   <body ng-app="application" ng-controller="appController">
-    <header>
-      <div id="left_header">Agriculture Blockchain Application - Customer Page</div>
-      <!-- <i id="right_header">Example Blockchain Application for Introduction to Hyperledger Fabric LFS171x</i> -->
-      <a class="btn btn-danger btn-md float-right rounded-0" style="position: absolute; right: 0;margin-right: 10px;" href="/logout" role="button">Logout</a>
-    </header>
+      <div class="cover">
+        <header>
+          <div id="left_header">Agriculture Blockchain Application - Customer Page</div>
+      
+          <a class="btn btn-danger btn-md float-right rounded-0" style="position: absolute; right: 0;margin-right: 10px;" href="/logout"
+            role="button">Logout</a>
+        </header>
+      </div>
 
     <div id="body">
       <ul class="nav nav-tabs">

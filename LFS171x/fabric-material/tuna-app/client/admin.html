@@ -94,6 +94,25 @@
       <!-- <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
         <li><a data-toggle="tab" href="#menu5">Consumer Trading</a></li> -->
     </ul>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img class="img img-responsive" id="my_image" style="display: block; margin-left: auto; margin-right: auto;" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="tab-content">
       <div id="menu1" class="tab-pane fade in active">
         <div class="form-group">
@@ -102,25 +121,7 @@
           <p><input id="queryAllproduct" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProduct()"></p>
         </div>
 
-        <!-- <table id="all_tuna" class="table" align="center">
-                  <tr>
-                    <th>ID</th>
-                    <th>Timestamp</th>
-                    <th>Holder</th>
-                    <th>Catch Location <br>(Longitude, Latitude)</th>
-                    <th>Vessel</th>
-                  </tr>
-                  
-                  <tr ng-repeat="tuna in all_tuna">
-                    <td>{{tuna.Key}}</td>
-                    <td>{{tuna.timestamp}}</td>
-                    <td>{{tuna.holder}}</td>
-                    <td>{{tuna.location}}</td>
-                    <td>{{tuna.vessel}}</td>
-                  </tr>
-                </table>   -->
-
-        <table id="all_product" class="table" align="center">
+        <table id="all_product" class="table">
           <tr>
             <th>Product ID</th>
             <th>Producing Area</th>
@@ -130,26 +131,24 @@
             <th>Quantity</th>
             <th>Timestamp</th>
             <th>Holder</th>
+            <th>Reference Image</th>
           </tr>
           <tr ng-repeat="product in all_product">
-            <td>{{product.Key}}</td>
-            <td>{{product.producing_area}}</td>
-            <td>{{product.product_type}}</td>
-            <td>{{product.product_unit}}</td>
-            <td>{{product.unit_price}}</td>
-            <td>{{product.quantity}}</td>
-            <td>{{product.timestamp}}</td>
-            <td>{{product.holder}}</td>
+            <td style="vertical-align:middle">{{product.Key}}</td>
+            <td style="vertical-align:middle">{{product.producing_area}}</td>
+            <td style="vertical-align:middle">{{product.product_type}}</td>
+            <td style="vertical-align:middle">{{product.product_unit}}</td>
+            <td style="vertical-align:middle">{{product.unit_price}}</td>
+            <td style="vertical-align:middle">{{product.quantity}}</td>
+            <td style="vertical-align:middle">{{product.timestamp}}</td>
+            <td style="vertical-align:middle">{{product.holder}}</td>
+            <td style="vertical-align:middle"><a href="" class="open-AddImgDialog" data-id="img/{{ product.image_reference }}" data-toggle="modal" data-target="#exampleModal"><img
+                  src="img/{{ product.image_reference }}" alt="" style="width:50px; height:auto;"></a></td>
           </tr>
         </table>
+
       </div>
       <div id="menu2" class="tab-pane fade">
-        <!-- <div class="form-group">
-              <label>Query a Specific Tuna Catch</label><br>
-              <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
-              Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
-              <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
-            </div> -->
 
         <div class="form-group">
           <label>Query a Specific Product Harvest</label><br>
@@ -157,23 +156,6 @@
           Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="product_type">
           <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllProductByType()">
         </div>
-
-        <!-- <table id="query_tuna" class="table" align="center">
-
-              <tr>
-                <th>Timestamp</th>
-                <th>Holder</th>
-                <th>Catch Location <br>(Longitude, Latitude)</th>
-                <th>Vessel</th>
-              </tr>
-
-              <tr>
-                <td>{{query_tuna.timestamp}}</td>
-                <td>{{query_tuna.holder}}</td>
-                <td>{{query_tuna.location}}</td>
-                <td>{{query_tuna.vessel}}</td>
-              </tr>
-            </table> -->
 
         <table id="query_product" class="table" align="center">
 
@@ -186,32 +168,23 @@
             <th>Quantity</th>
             <th>Timestamp</th>
             <th>Holder</th>
+            <th>Image Reference</th>
           </tr>
           <tr ng-repeat="query_product in query_products">
-            <td>{{query_product.Key}}</td>
-            <td>{{query_product.producing_area}}</td>
-            <td>{{query_product.product_type}}</td>
-            <td>{{query_product.product_unit}}</td>
-            <td>{{query_product.unit_price}}</td>
-            <td>{{query_product.quantity}}</td>
-            <td>{{query_product.timestamp}}</td>
-            <td>{{query_product.holder}}</td>
+            <td style="vertical-align:middle">{{query_product.Key}}</td>
+            <td style="vertical-align:middle">{{query_product.producing_area}}</td>
+            <td style="vertical-align:middle">{{query_product.product_type}}</td>
+            <td style="vertical-align:middle">{{query_product.product_unit}}</td>
+            <td style="vertical-align:middle">{{query_product.unit_price}}</td>
+            <td style="vertical-align:middle">{{query_product.quantity}}</td>
+            <td style="vertical-align:middle">{{query_product.timestamp}}</td>
+            <td style="vertical-align:middle">{{query_product.holder}}</td>
+            <td style="vertical-align:middle"><a href="" class="open-AddImgDialog" data-id="img/{{ query_product.image_reference }}" data-toggle="modal" data-target="#exampleModal"><img
+              src="img/{{ query_product.image_reference }}" alt="" style="width:50px; height:auto;"></a></td>
           </tr>
         </table>
       </div>
       <div id="menu3" class="tab-pane fade">
-        <!-- <div class="form-group">
-            <label>Create Tuna Record</label>
-            <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
-            <br>
-            Enter catch id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="tuna.id">
-            Enter name of vessel: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="tuna.vessel">
-            Enter longitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 28.012" ng-model="tuna.longitude"> 
-            Enter latitude: <input id="createName" class="form-control" type="text" placeholder="Ex: 150.405" ng-model="tuna.latitude">
-            Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="tuna.timestamp">
-            Enter name of holder: <input class="form-control" type="text" placeholder="Ex: Hansel" ng-model="tuna.holder">
-            <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordTuna()"> 
-          </div> -->
 
         <div class="form-group">
           <label>Create Product Record</label>
@@ -228,14 +201,6 @@
         </div>
       </div>
       <div id="menu4" class="tab-pane fade">
-        <!-- <div class="form-group">
-              <label>Change Tuna Holder</label><br>
-              <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_holder}}</h5>
-              <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Tuna Id</h5>
-              Enter a catch id between 1 and 10: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="holder.id">
-              Enter name of new holder: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="holder.name">
-              <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeHolder()">
-            </div> -->
 
         <div class="form-group">
           <label>Change Product Holder</label><br>
@@ -247,12 +212,6 @@
         </div>
       </div>
       <div id="menu5" class="tab-pane fade">
-        <!-- <div class="form-group">
-                <label>Query a Specific Tuna Catch</label><br>
-                <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Tuna Id</h5>
-                Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="tuna_id">
-                <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryTuna()">
-              </div> -->
 
         <div class="form-group">
           <label>Query Agriculture Product</label><br>
@@ -260,23 +219,6 @@
           Enter a Product Type: <input id="createName" class="form-control" type="text" placeholder="Ex: 옥수수" ng-model="consumer_product_type">
           <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="consumerQueryAllProductByType()">
         </div>
-
-        <!-- <table id="query_tuna" class="table" align="center">
-  
-                <tr>
-                  <th>Timestamp</th>
-                  <th>Holder</th>
-                  <th>Catch Location <br>(Longitude, Latitude)</th>
-                  <th>Vessel</th>
-                </tr>
-  
-                <tr>
-                  <td>{{query_tuna.timestamp}}</td>
-                  <td>{{query_tuna.holder}}</td>
-                  <td>{{query_tuna.location}}</td>
-                  <td>{{query_tuna.vessel}}</td>
-                </tr>
-              </table> -->
 
         <table id="query_product" class="table" align="center">
 
@@ -317,6 +259,14 @@
     </div>
   </div>
 </body>
+
+<script>
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  $(document).on("click", ".open-AddImgDialog", function () {
+    var imgsrc = $(this).data('id');
+    $('#my_image').attr('src', imgsrc);
+  });
+</script>
 <!-- requiring the angular page -->
 <script type="text/javascript" src="app.js"> </script>
 

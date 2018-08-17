@@ -85,6 +85,26 @@
         <li><a data-toggle="tab" href="#menu4">Change Product Holder</a></li>
         <li><a data-toggle="tab" href="#menu5">Consumer Trading</a></li>
       </ul>
+
+          <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img class="img img-responsive" id="my_image" style="display: block; margin-left: auto; margin-right: auto;" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="tab-content">
           <div id="menu2" class="tab-pane fade in active">
             <div class="form-group">
@@ -105,16 +125,19 @@
                     <th>Quantity</th>
                     <th>Timestamp</th>
                     <th>Holder</th>
+                    <th>Reference Image</th>
                 </tr>
                 <tr ng-repeat="query_product in query_products">
-                    <td>{{query_product.Key}}</td>
-                    <td>{{query_product.producing_area}}</td>
-                    <td>{{query_product.product_type}}</td>
-                    <td>{{query_product.product_unit}}</td>
-                    <td>{{query_product.unit_price}}</td>
-                    <td>{{query_product.quantity}}</td>
-                    <td>{{query_product.timestamp}}</td>
-                    <td>{{query_product.holder}}</td>
+                  <td style="vertical-align:middle">{{query_product.Key}}</td>
+                  <td style="vertical-align:middle">{{query_product.producing_area}}</td>
+                  <td style="vertical-align:middle">{{query_product.product_type}}</td>
+                  <td style="vertical-align:middle">{{query_product.product_unit}}</td>
+                  <td style="vertical-align:middle">{{query_product.unit_price}}</td>
+                  <td style="vertical-align:middle">{{query_product.quantity}}</td>
+                  <td style="vertical-align:middle">{{query_product.timestamp}}</td>
+                  <td style="vertical-align:middle">{{query_product.holder}}</td>
+                  <td style="vertical-align:middle"><a href="" class="open-AddImgDialog" data-id="img/{{ query_product.image_reference }}" data-toggle="modal" data-target="#exampleModal"><img
+                    src="img/{{ query_product.image_reference }}" alt="" style="width:50px; height:auto;"></a></td>
                 </tr>
               </table>
           </div>
@@ -147,17 +170,20 @@
                       <th>Quantity</th>
                       <th>Timestamp</th>
                       <th>Holder</th>
+                      <th>Reference Image</th>
                   </tr>
                   <tr ng-repeat="query_product in consumer_query_products">
-                      <td><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}></td>
-                      <td>{{query_product.Key}}</td>
-                      <td>{{query_product.producing_area}}</td>
-                      <td>{{query_product.product_type}}</td>
-                      <td>{{query_product.product_unit}}</td>
-                      <td>{{query_product.unit_price}}</td>
-                      <td>{{query_product.quantity}}</td>
-                      <td>{{query_product.timestamp}}</td>
-                      <td>{{query_product.holder}}</td>
+                      <td style="vertical-align:middle"><input type="checkbox" name="checkboxes" id="checkboxes-{{query_product.Key}}" value="{{query_product.Key}}"></td>
+                      <td style="vertical-align:middle">{{query_product.Key}}</td>
+                      <td style="vertical-align:middle">{{query_product.producing_area}}</td>
+                      <td style="vertical-align:middle">{{query_product.product_type}}</td>
+                      <td style="vertical-align:middle">{{query_product.product_unit}}</td>
+                      <td style="vertical-align:middle">{{query_product.unit_price}}</td>
+                      <td style="vertical-align:middle">{{query_product.quantity}}</td>
+                      <td style="vertical-align:middle">{{query_product.timestamp}}</td>
+                      <td style="vertical-align:middle">{{query_product.holder}}</td>
+                      <td style="vertical-align:middle"><a href="" class="open-AddImgDialog" data-id="img/{{ query_product.image_reference }}" data-toggle="modal" data-target="#exampleModal"><img
+                        src="img/{{ query_product.image_reference }}" alt="" style="width:50px; height:auto;"></a></td>
                   </tr>
                 </table>
 
@@ -174,6 +200,14 @@
         </div>
     </div>
   </body>
+
+  <script>
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      $(document).on("click", ".open-AddImgDialog", function () {
+        var imgsrc = $(this).data('id');
+        $('#my_image').attr('src', imgsrc);
+      });
+    </script>
     <!-- requiring the angular page -->
     <script type="text/javascript" src="app.js"> </script>
 </html>

@@ -20,6 +20,13 @@ app.controller('appController', function($scope, appFactory, $window){
 			for (var i = 0; i < data.length; i++){
 				parseInt(data[i].Key);
 				data[i].Record.Key = parseInt(data[i].Key);
+				
+				var random_boolean = Math.random() >= 0.5;
+				if (random_boolean) {
+					data[i].Record.image_reference = "letter-ref.jpg";
+				}else {
+					data[i].Record.image_reference = "no-image.jpg";
+				}
 				array.push(data[i].Record);
 			}
 			array.sort(function(a, b) {
@@ -55,6 +62,14 @@ app.controller('appController', function($scope, appFactory, $window){
 			for (var i = 0; i < data.length; i++){
 				parseInt(data[i].Key);
 				data[i].Record.Key = parseInt(data[i].Key);
+
+				var random_boolean = Math.random() >= 0.5;
+				if (random_boolean) {
+					data[i].Record.image_reference = "letter-ref.jpg";
+				}else {
+					data[i].Record.image_reference = "no-image.jpg";
+				}
+
 				array.push(data[i].Record);
 			}
 			array.sort(function(a, b) {
@@ -73,6 +88,14 @@ app.controller('appController', function($scope, appFactory, $window){
 			for (var i = 0; i < data.length; i++){
 				parseInt(data[i].Key);
 				data[i].Record.Key = parseInt(data[i].Key);
+
+				var random_boolean = Math.random() >= 0.5;
+				if (random_boolean) {
+					data[i].Record.image_reference = "letter-ref.jpg";
+				}else {
+					data[i].Record.image_reference = "no-image.jpg";
+				}
+				
 				array.push(data[i].Record);
 			}
 			array.sort(function(a, b) {
